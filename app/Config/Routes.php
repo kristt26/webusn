@@ -32,12 +32,27 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 
 $routes->group('admin', function($routes){
+    $routes->get('/', 'Admin\Home::index');
     $routes->group('slide', function($item){
         $item->get('/', 'Admin\Slide::index');
         $item->get('read', 'Admin\Slide::read');
         $item->post('post', 'Admin\Slide::post');
         $item->put('put', 'Admin\Slide::put');
-        $item->delete('delete', 'Admin\Slide::delete');
+        $item->delete('delete/(:num)', 'Admin\Slide::delete/$1');
+    });
+    $routes->group('galeri', function($item){
+        $item->get('/', 'Admin\Galery::index');
+        $item->get('read', 'Admin\Galery::read');
+        $item->post('post', 'Admin\Galery::post');
+        $item->put('put', 'Admin\Galery::put');
+        $item->delete('delete/(:num)', 'Admin\Galery::delete/$1');
+    });
+    $routes->group('berita', function($item){
+        $item->get('/', 'Admin\Berita::index');
+        $item->get('read', 'Admin\Berita::read');
+        $item->post('post', 'Admin\Berita::post');
+        $item->put('put', 'Admin\Berita::put');
+        $item->delete('delete/(:num)', 'Admin\Berita::delete/$1');
     });
 });
 

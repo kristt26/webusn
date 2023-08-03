@@ -21,6 +21,8 @@
     <link href="<?= base_url() ?>/assets/vendor/clock-picker/clockpicker.css" rel="stylesheet">
     <!-- RuangAdmin CSS -->
     <link href="<?= base_url() ?>/assets/css/ruang-admin.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <link href="<?= base_url() ?>/libs/angular-datatables/dist/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 </head>
 
 <body id="page-top" ng-controller="indexController">
@@ -207,11 +209,11 @@
                 <!-- Container Fluid-->
                 <div class="container-fluid" id="container-wrapper">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800"><?= $title?></h1>
+                        <h1 class="h3 mb-0 text-gray-800"><?= $title ?></h1>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url() ?>/assets/./">Home</a></li>
                             <!-- <li class="breadcrumb-item">Forms</li> -->
-                            <li class="breadcrumb-item active" aria-current="page"><?= $title?></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= $title ?></li>
                         </ol>
                     </div>
                     <?= $this->renderSection('content'); ?>
@@ -256,7 +258,7 @@
     <script src="<?= base_url() ?>/assets/vendor/clock-picker/clockpicker.js"></script>
     <!-- RuangAdmin Javascript -->
     <script src="<?= base_url() ?>/assets/js/ruang-admin.min.js"></script>
-  
+
     <script src="<?= base_url() ?>/js/apps.js"></script>
     <script src="<?= base_url() ?>/js/services/helper.services.js"></script>
     <script src="<?= base_url() ?>/js/services/auth.services.js"></script>
@@ -277,11 +279,14 @@
     <script src="<?= base_url() ?>/libs/datatables/btn.js"></script>
     <script src="<?= base_url() ?>/libs/datatables/print.js"></script>
     <script src="<?= base_url() ?>/libs/loading/dist/loadingoverlay.min.js"></script>
+    <!-- <script src="<?= base_url() ?>/libs/tinymce/tinymce.js"></script> -->
+    <script src="<?= base_url() ?>/libs/angular-ui-tinymce/src/tinymce.js"></script>
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/rv9fpjih10cz06opokn2wzy9zina5xksqeku4a1vitllucut/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- Javascript for this page -->
     <script>
         $(document).ready(function() {
-
 
             $('.select2-single').select2();
 
@@ -296,7 +301,7 @@
 
             // Bootstrap Date Picker
             $('#simple-date1 .input-group.date').datepicker({
-                format: 'dd/mm/yyyy',
+                format: 'yyyy-mm-dd',
                 todayBtn: 'linked',
                 todayHighlight: true,
                 autoclose: true,

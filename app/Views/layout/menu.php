@@ -20,7 +20,8 @@
                 <div id="setView" class="collapse" ng-class="{'show': collapse=='Setting'}" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" ng-class="{'active': title=='Slider'}" href="<?= base_url() ?>/admin/slide">Slide</a>
-                        <a class="collapse-item" href="<?= base_url() ?>/assets/form_advanceds.html">Form Advanceds</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Galery'}" href="<?= base_url() ?>/admin/galeri">Galery</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Berita'}" href="<?= base_url() ?>/admin/berita">Berita</a>
                     </div>
                 </div>
             </li>

@@ -11,16 +11,18 @@
                 <form ng-submit="save()">
                     <div class="form-group">
                         <label>Judul</label>
-                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Judul Gambar" ng-model="model.judul">
+                        <input type="text" class="form-control" id="judul" aria-describedby="emailHelp" placeholder="Judul Gambar" ng-model="model.judul">
                     </div>
                     <div class="form-group">
                         <label>File</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" accept="image/*" ng-model="model.berkas" ng-change="show(model.berkas)" base-sixty-four-input>
-                            <label class="custom-file-label" for="customFile">{{model.berkas ? model.berkas.filename : 'Pilih Gambar'}}</label>
+                            <input type="file" class="custom-file-input" id="customFile" accept="image/*" ng-model="model.berkas" base-sixty-four-input>
+                            <label class="custom-file-label" for="customFile">{{model.berkas ? model.berkas.filename : model.gambar ? model.gambar :  'Pilih Gambar'}}</label>
                         </div>
+                        <img ng-show="model.id && !model.berkas" class="img-fluid" style="border: 5px solid #555" ng-src="<?= base_url() ?>/assets/berkas/slider/{{model.gambar}}" width="30%">
+                        <img ng-show="model.berkas" class="img-fluid" style="border: 5px solid #555" data-ng-src="data:{{model.berkas.filetype}};base64,{{model.berkas.base64}}" width="30%">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                 </form>
             </div>
         </div>
@@ -38,6 +40,7 @@
                                 <th>#</th>
                                 <th>Judul</th>
                                 <th>Gambar</th>
+                                <th>Tampil</th>
                                 <th><i class="fa fa-cogs" aria-hidden="true"></i></th>
                             </tr>
                         </thead>
@@ -45,8 +48,19 @@
                             <tr ng-repeat="item in datas">
                                 <td>{{$index+1}}</td>
                                 <td>{{item.judul}}</td>
-                                <td>{{item.gambar}}</td>
-                                <td></td>
+                                <td>
+                                    <a href="<?= base_url() ?>/assets/berkas/slider/{{item.gambar}}" data-lightbox="photos">{{item.gambar}}</a>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1" ng-model="item.tampil" ng-change="ubah(item)">
+                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-sm" ng-click="edit(item)"><i class="fas fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" ng-click="delete(item)"><i class="fas fa-trash"></i></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

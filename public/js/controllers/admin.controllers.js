@@ -2,8 +2,8 @@ angular.module('adminctrl', [])
     // Admin
     .controller('dashboardController', dashboardController)
     .controller('sliderController', sliderController)
-    // .controller('juriController', juriController)
-    // .controller('kriteriaController', kriteriaController)
+    .controller('galeriController', galeriController)
+    .controller('beritaController', beritaController)
     // .controller('alternatifController', alternatifController)
     // .controller('laporanController', laporanController)
     ;
@@ -33,6 +33,7 @@ function sliderController($scope, slideServices, pesan, helperServices) {
                 slideServices.put($scope.model).then(res => {
                     $scope.model = {};
                     pesan.Success("Berhasil mengubah data");
+                    $.LoadingOverlay("hide");
                 })
             } else {
                 slideServices.post($scope.model).then(res => {
@@ -44,19 +45,24 @@ function sliderController($scope, slideServices, pesan, helperServices) {
         })
     }
 
+    $scope.ubah = (param)=>{
+        slideServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
     $scope.show = (param)=>{
         console.log(param);
     }
 
     $scope.edit = (item) => {
         $scope.model = angular.copy(item);
-        $scope.model.mulai = new Date($scope.model.mulai);
-        $scope.model.selesai = new Date($scope.model.selesai);
-        document.getElementById("periode").focus();
+        document.getElementById("judul").focus();
     }
 
     $scope.delete = (param) => {
-        pesan.dialog('Yakin ingin?', 'Ya', 'Tidak').then(res => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
             slideServices.deleted(param).then(res => {
                 pesan.Success("Berhasil menghapus data");
             })
@@ -68,141 +74,114 @@ function sliderController($scope, slideServices, pesan, helperServices) {
     }
 }
 
-// function juriController($scope, juriServices, pesan, helperServices) {
-//     $scope.setTitle = "Juri";
-//     $scope.$emit("SendUp", $scope.setTitle);
-//     $scope.datas = {};
-//     $scope.model = {};
-//     juriServices.get().then((res) => {
-//         $scope.datas = res;
-//     })
-//     $scope.save = () => {
-//         var data = angular.copy($scope.model);
-//         pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
-//             if ($scope.model.id) {
-//                 juriServices.put(data).then(res => {
-//                     $scope.model = {};
-//                     pesan.Success("Berhasil mengubah data");
-//                 })
-//             } else {
-//                 juriServices.post(data).then(res => {
-//                     $scope.model = {};
-//                     pesan.Success("Berhasil menambah data");
-//                 })
-//             }
-//         })
-//     }
+function galeriController($scope, galeriServices, pesan, helperServices) {
+    $scope.setTitle = "Galery";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    galeriServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                galeriServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                galeriServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
 
-//     $scope.edit = (item) => {
-//         $scope.model = angular.copy(item);
-//         $scope.model.mulai = new Date($scope.model.mulai);
-//         $scope.model.selesai = new Date($scope.model.selesai);
-//         document.getElementById("juri").focus();
-//     }
+    $scope.ubah = (param)=>{
+        galeriServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
 
-//     $scope.delete = (param) => {
-//         pesan.dialog('Yakin ingin?', 'Ya', 'Tidak').then(res => {
-//             juriServices.deleted(param).then(res => {
-//                 pesan.Success("Berhasil menghapus data");
-//             })
-//         });
-//     }
+    $scope.show = (param)=>{
+        console.log(param);
+    }
 
-//     $scope.subKlasifikasi = (param) => {
-//         document.location.href = helperServices.url + "admin/sub_klasifikasi/data/" + param.id;
-//     }
-// }
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        document.getElementById("judul").focus();
+    }
 
-// function kriteriaController($scope, kriteriaServices, pesan, helperServices, subServices) {
-//     $scope.setTitle = "Kriteria";
-//     $scope.$emit("SendUp", $scope.setTitle);
-//     $scope.datas = {};
-//     $scope.model = {};
-//     kriteriaServices.get().then((res) => {
-//         $scope.datas = res;
-//     })
-//     $scope.save = () => {
-//         pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
-//             if ($scope.model.id) {
-//                 kriteriaServices.put($scope.model).then(res => {
-//                     $scope.model = {};
-//                     pesan.Success("Berhasil mengubah data");
-//                 })
-//             } else {
-//                 kriteriaServices.post($scope.model).then(res => {
-//                     $scope.model = {};
-//                     pesan.Success("Berhasil menambah data");
-//                 })
-//             }
-//         })
-//     }
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            galeriServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
 
-//     $scope.edit = (item) => {
-//         item.bobot = parseInt(item.bobot);
-//         item.profileKriteria = parseInt(item.profileKriteria);
-//         $scope.model = angular.copy(item);
-//         document.getElementById("kriteria").focus();
-//     }
+function beritaController($scope, beritaServices, pesan, helperServices) {
+    $scope.setTitle = "Berita";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    $scope.tinymceOptions = {
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight alignleft aligncenter alignright | numlist bullist indent outdent | emoticons charmap | removeformat | code'
+      };
+    beritaServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                beritaServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                beritaServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
 
-//     $scope.showSub = (param) => {
-//         $.LoadingOverlay("show");
-//         setTimeout(() => {
-//             $.LoadingOverlay("hide");
-//             $scope.$applyAsync(x => {
-//                 $scope.kriteria = param;
-//                 $scope.setTitle = "Sub";
-//             })
-//         }, 200);
-//     }
+    $scope.ubah = (param)=>{
+        beritaServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
 
-//     $scope.saveSub = () => {
-//         pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
-//             $scope.model.kriteria_id = $scope.kriteria.id;
-//             if ($scope.model.id) {
-//                 subServices.put($scope.model).then(res => {
-//                     $scope.model = {};
-//                     pesan.Success("Berhasil mengubah data");
-//                 })
-//             } else {
-//                 subServices.post($scope.model).then(res => {
-//                     $scope.model.id = res;
-//                     if(!$scope.kriteria.sub) $scope.kriteria.sub = [];
-//                     $scope.kriteria.sub.push($scope.model);
-//                     $scope.model = {};
-//                     $scope.model.kriteria_id = $scope.kriteria.id;
-//                     pesan.Success("Berhasil menambah data");
-//                 })
-//             }
-//         })
-//     }
+    $scope.show = (param)=>{
+        console.log(param);
+    }
 
-//     $scope.delete = (param) => {
-//         pesan.dialog('Yakin ingin?', 'Ya', 'Tidak').then(res => {
-//             kriteriaServices.deleted(param).then(res => {
-//                 pesan.Success("Berhasil menghapus data");
-//             })
-//         });
-//     }
-//     $scope.deleteSub = (param) => {
-//         pesan.dialog('Yakin ingin?', 'Ya', 'Tidak').then(res => {
-//             subServices.deleted(param).then(res => {
-//                 var index = $scope.kriteria.range.indexOf(param);
-//                 $scope.kriteria.range.splice(index, 1);
-//                 pesan.Success("Berhasil menghapus data");
-//             })
-//         });
-//     }
-//     $scope.back = () => {
-//         $.LoadingOverlay("show");
-//         setTimeout(() => {
-//             $.LoadingOverlay("hide");
-//             $scope.$applyAsync(x => {
-//                 $scope.kriteria = {};
-//                 $scope.setTitle = "Kriteria";
-//             })
-//         }, 200);
-//     }
-// }
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        $("#modelId").modal('show');
+        document.getElementById("judul").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            beritaServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
 
 // function alternatifController($scope, alternatifServices, kriteriaServices, pesan, helperServices) {
 //     $scope.setTitle = "Alternatif";

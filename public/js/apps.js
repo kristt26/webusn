@@ -12,7 +12,8 @@ angular.module('apps', [
     'ngSanitize',
     'ui.router',
     'ui.select2',
-    "component"
+    "component",
+    "ui.tinymce"
 
 ])
 
@@ -49,7 +50,7 @@ function indexController($scope, helperServices, dashboardServices) {
         $scope.header = data;
         $scope.breadcrumb = data;
         $scope.title = data;
-        if(data=='Slider')
+        if(data=='Slider' || data=='Galery' || data=='Berita')
             $scope.collapse = 'Setting';
         $.LoadingOverlay("hide");
     });
