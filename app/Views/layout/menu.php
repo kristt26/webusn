@@ -1,7 +1,7 @@
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() ?>/assets/index.html">
                 <div class="sidebar-brand-icon">
-                    <img src="<?= base_url() ?>/assets/img/logo/logo2.png">
+                    <img src="<?= base_url() ?>/assets/img/logo.png">
                 </div>
                 <div class="sidebar-brand-text mx-3">USN Papua</div>
             </a>
@@ -22,6 +22,7 @@
                         <a class="collapse-item" ng-class="{'active': title=='Slider'}" href="<?= base_url() ?>/admin/slide">Slide</a>
                         <a class="collapse-item" ng-class="{'active': title=='Galery'}" href="<?= base_url() ?>/admin/galeri">Galery</a>
                         <a class="collapse-item" ng-class="{'active': title=='Berita'}" href="<?= base_url() ?>/admin/berita">Berita</a>
+                        <a class="collapse-item" ng-class="{'active': title=='Kerjasama'}" href="<?= base_url() ?>/admin/kerjasama">Kerjasama</a>
                     </div>
                 </div>
             </li>
