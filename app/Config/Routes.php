@@ -30,6 +30,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('detail_berita/(:num)', 'Home::detail_berita/$1');
 $routes->get('/page', 'Home::page');
 
 $routes->group('admin', function($routes){
@@ -61,6 +62,13 @@ $routes->group('admin', function($routes){
         $item->post('post', 'Admin\Kerjasama::post');
         $item->put('put', 'Admin\Kerjasama::put');
         $item->delete('delete/(:num)', 'Admin\Kerjasama::delete/$1');
+    });
+    $routes->group('prodi', function($item){
+        $item->get('/', 'Admin\Prodi::index');
+        $item->get('read', 'Admin\Prodi::read');
+        $item->post('post', 'Admin\Prodi::post');
+        $item->put('put', 'Admin\Prodi::put');
+        $item->delete('delete/(:num)', 'Admin\Prodi::delete/$1');
     });
 });
 

@@ -38,6 +38,7 @@ class Berita extends BaseController
             'judul'=>$param->judul,
             'gambar'=>$this->code->decodebase64($param->berkas->base64,'berita'),
             'isi'=>$param->isi,
+            'tanggal'=>$param->tanggal,
             'publish'=>false,
         ];
         $this->berita->insert($item);
@@ -53,6 +54,7 @@ class Berita extends BaseController
             'judul'=>$param->judul,
             'gambar'=>$param->gambar,
             'isi'=>$param->isi,
+            'tanggal'=>$param->tanggal,
             'publish'=>$param->publish,
         ];
         if(isset($param->berkas)){

@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group" id="simple-date1">
+                                <div class="form-group" id="simple-date1" ng-model="model.tanggal">
                                     <label for="simpleDataInput">Tanggal Berita</label>
                                     <div class="input-group date">
                                         <div class="input-group-prepend">

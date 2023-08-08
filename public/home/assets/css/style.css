@@ -19,6 +19,13 @@ a {
   text-decoration: none;
 }
 
+.garis {
+  border-style: solid;
+  position: relative;
+  border-bottom: maroon;
+  color: maroon;
+}
+
 a:hover {
   color: #ffd584;
   text-decoration: none;
@@ -144,12 +151,17 @@ h6 {
   color: #fff;
 }
 
+.sub_div {
+  position: absolute;
+  bottom: 0px;
+}
+
 #header .logo a span {
   color: #ffc451;
 }
 
 #header .logo img {
-  max-height: 40px;
+  max-height: 80px;
 }
 
 /*--------------------------------------------------------------
@@ -1353,7 +1365,7 @@ section {
   padding: 15px 0;
   background: whitesmoke;
   min-height: 40px;
-  margin-top: 74px;
+  margin-top: 111px;
 }
 
 .breadcrumbs h2 {

@@ -12,6 +12,11 @@
                     <span>Dashboard</span></a>
             </li>
             <hr class="sidebar-divider">
+            <li class="nav-item" ng-class="{'active': title=='Prodi'}">
+                <a class="nav-link" href="<?= base_url() ?>/admin/prodi">
+                    <i class="fas fa-book"></i>
+                    <span>Program Studi</span></a>
+            </li>
             <li class="nav-item" ng-class="{'active': collapse=='Setting'}">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setView" aria-expanded="true" aria-controls="setView">
                         <i class="fab fa-fw fa-wpforms"></i>
