@@ -3,17 +3,16 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Usermodel;
+use App\Models\UserModel;
 
 class Auth extends BaseController
 {
     protected $user;
     public function __construct() {
-        $this->user = new Usermodel();
+        $this->user = new UserModel();
     }
     public function index()
     {
-        $this->user = new Usermodel();
         if($this->user->countAllResults()==0){
             $this->user->insert(['username'=>'Administrator', 'password'=>password_hash('Administrator#1', PASSWORD_DEFAULT), 'akses'=>'Administrator']);
         }
