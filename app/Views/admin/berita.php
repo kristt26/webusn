@@ -60,7 +60,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Judul</label>
-                                    <input type="text" class="form-control" id="judul" aria-describedby="emailHelp" placeholder="Judul Gambar" ng-model="model.judul">
+                                    <input type="text" class="form-control" id="judul" aria-describedby="emailHelp" placeholder="Judul Berita" ng-model="model.judul">
                                 </div>
                             </div>
                             <div class="col-md-3">

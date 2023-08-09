@@ -31,9 +31,14 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('detail_berita/(:num)', 'Home::detail_berita/$1');
+$routes->get('detail_pengumuman/(:num)', 'Home::detail_pengumuman/$1');
+$routes->get('contact', 'Home::contact');
+$routes->get('auth', 'Auth::index');
+$routes->add('auth/login', 'Auth::login');
+$routes->add('auth/logout', 'Auth::logout');
 $routes->get('/page', 'Home::page');
 
-$routes->group('admin', function($routes){
+$routes->group('admin', ['filter' => 'auth'], function($routes){
     $routes->get('/', 'Admin\Home::index');
     $routes->group('slide', function($item){
         $item->get('/', 'Admin\Slide::index');
@@ -69,6 +74,20 @@ $routes->group('admin', function($routes){
         $item->post('post', 'Admin\Prodi::post');
         $item->put('put', 'Admin\Prodi::put');
         $item->delete('delete/(:num)', 'Admin\Prodi::delete/$1');
+    });
+    $routes->group('video', function($item){
+        $item->get('/', 'Admin\Video::index');
+        $item->get('read', 'Admin\Video::read');
+        $item->post('post', 'Admin\Video::post');
+        $item->put('put', 'Admin\Video::put');
+        $item->delete('delete/(:num)', 'Admin\Video::delete/$1');
+    });
+    $routes->group('pengumuman', function($item){
+        $item->get('/', 'Admin\Pengumuman::index');
+        $item->get('read', 'Admin\Pengumuman::read');
+        $item->post('post', 'Admin\Pengumuman::post');
+        $item->put('put', 'Admin\Pengumuman::put');
+        $item->delete('delete/(:num)', 'Admin\Pengumuman::delete/$1');
     });
 });
 

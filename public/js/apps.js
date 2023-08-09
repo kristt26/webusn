@@ -50,7 +50,7 @@ function indexController($scope, helperServices, dashboardServices) {
         $scope.header = data;
         $scope.breadcrumb = data;
         $scope.title = data;
-        if(data=='Slider' || data=='Galery' || data=='Berita' || data=='Kerjasama')
+        if(data=='Slider' || data=='Galery' || data=='Berita' || data=='Kerjasama' || data=='Video')
             $scope.collapse = 'Setting';
         $.LoadingOverlay("hide");
     });

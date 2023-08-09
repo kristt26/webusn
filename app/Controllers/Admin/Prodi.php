@@ -50,8 +50,9 @@ class Prodi extends BaseController
         $param = $this->request->getJSON();
         $item = [
             'id'=>$param->id,
-            'judul'=>$param->judul,
-            'gambar'=>$param->gambar,
+            'prodi'=>$param->prodi,
+            'link'=>isset($param->link) ? $param->link : null,
+            'desc'=>isset($param->desc) ? $param->desc : null,
             'tampil'=>$param->tampil,
         ];
         if(isset($param->berkas)){

@@ -45,8 +45,8 @@
                                 <td>{{item.link}}</td>
                                 <td>
                                     <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1" ng-model="item.tampil" ng-change="ubah(item)">
-                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch{{$index+1}}" ng-model="item.tampil" ng-change="ubah(item)">
+                                        <label class="custom-control-label" for="customSwitch{{$index+1}}"></label>
                                     </div>
                                 </td>
                                 <td>

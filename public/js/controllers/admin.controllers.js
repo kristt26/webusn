@@ -6,6 +6,8 @@ angular.module('adminctrl', [])
     .controller('beritaController', beritaController)
     .controller('kerjasamaController', kerjasamaController)
     .controller('prodiController', prodiController)
+    .controller('pengumumanController', pengumumanController)
+    .controller('videoController', videoController)
     ;
 
 function dashboardController($scope, dashboardServices) {
@@ -337,6 +339,115 @@ function prodiController($scope, prodiServices, pesan, helperServices) {
     $scope.delete = (param) => {
         pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
             prodiServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
+function pengumumanController($scope, pengumumanServices, pesan, helperServices) {
+    $scope.setTitle = "Prodi";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    $scope.tinymceOptions = {
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount code',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight alignleft aligncenter alignright | numlist bullist indent outdent | emoticons charmap | removeformat | code'
+    };
+    pengumumanServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                pengumumanServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                pengumumanServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        pengumumanServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        $("#modelId").modal('show');
+        document.getElementById("judul").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            pengumumanServices.deleted(param).then(res => {
+                pesan.Success("Berhasil menghapus data");
+            })
+        });
+    }
+}
+
+function videoController($scope, videoServices, pesan, helperServices) {
+    $scope.setTitle = "Video";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.model = {};
+    videoServices.get().then((res) => {
+        $scope.datas = res;
+    })
+    $scope.save = () => {
+        pesan.dialog('Yakin ingin?', 'Yes', 'Tidak').then(res => {
+            $.LoadingOverlay("show");
+            if ($scope.model.id) {
+                videoServices.put($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil mengubah data");
+                    $.LoadingOverlay("hide");
+                })
+            } else {
+                videoServices.post($scope.model).then(res => {
+                    $scope.model = {};
+                    pesan.Success("Berhasil menambah data");
+                    $.LoadingOverlay("hide");
+                })
+            }
+        })
+    }
+
+    $scope.ubah = (param) => {
+        videoServices.put(param).then(res => {
+            $scope.model = {};
+            pesan.Success("Berhasil mengubah data");
+        })
+    }
+
+    $scope.show = (param) => {
+        console.log(param);
+    }
+
+    $scope.edit = (item) => {
+        $scope.model = angular.copy(item);
+        document.getElementById("judul").focus();
+    }
+
+    $scope.delete = (param) => {
+        pesan.dialog('Yakin ingin ingin menghapus?', 'Ya', 'Tidak').then(res => {
+            videoServices.deleted(param).then(res => {
                 pesan.Success("Berhasil menghapus data");
             })
         });

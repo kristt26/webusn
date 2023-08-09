@@ -25,7 +25,7 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if(!session()->get('isRole')){
+        if(!session()->get('is_login')){
             return redirect()->to(base_url('auth'));
         }
     }

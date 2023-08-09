@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
 
 class Home extends BaseController
 {
     public function index(): string
     {
-        return view('home',['title'=>'Home']);
+        return view('admin/home',['title'=>'Home']);
     }
 }
