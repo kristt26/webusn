@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?= base_url() ?>home/assets/img/favicon.png" rel="icon">
+    <link href="<?= base_url() ?>assets/img/favicon.png" rel="icon">
     <link href="<?= base_url() ?>home/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -82,7 +82,7 @@
             </nav>
             <!-- .navbar -->
 
-            <a href="#" class="get-started-btn scrollto">Pendaftaran Mahasiswa</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPLFvQa4Sns2N1Rj2Ou5sFfAYJcPDq85YG_KnpUMlaRadfVA/viewform" target="_blank" class="get-started-btn scrollto">Pendaftaran Mahasiswa</a>
 
         </div>
     </header><!-- End Header -->
@@ -117,7 +117,7 @@
         <section id="about" class="team">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
-                    <p>Hot News</p>
+                    <p><i class="fas fa-newspaper"></i> Hot News</p>
                     <div class="garis"></div>
                     <!-- <h2>Services</h2> -->
                 </div>
@@ -193,7 +193,7 @@
         <section id="services" class="services">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
-                    <p>Galery Photo</p>
+                    <p><i class="fas fa-images"></i> Galery Photo</p>
                     <div class="garis"></div>
                     <!-- <h2>Services</h2> -->
                 </div>
@@ -220,74 +220,20 @@
                 <div class="row">
                     <div class="clients-slider swiper">
                         <div class="swiper-wrapper align-items-center">
+                        <?php foreach ($pengajar as $key => $value) : ?>
                             <div class="col-lg-4 col-md-8 d-flex align-items-stretch swiper-slide" style="width: 190px;">
                                 <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="member-img">
-                                        <img src="<?= base_url() ?>home/assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                        <div class="social">
-                                            <a href=""><i class="bi bi-twitter"></i></a>
-                                            <a href=""><i class="bi bi-facebook"></i></a>
-                                            <a href=""><i class="bi bi-instagram"></i></a>
-                                            <a href=""><i class="bi bi-linkedin"></i></a>
-                                        </div>
+                                    <div class="member-img center-cropped">
+                                        <img src="<?= base_url('assets/berkas/pengajar/').$value->gambar ?>" class="img-fluid" alt="">
+                                        
                                     </div>
                                     <div class="member-info">
-                                        <h4>Walter White</h4>
-                                        <span>Chief Executive Officer</span>
+                                        <h6><?= $value->nama?></h6>
+                                        <span><?= $value->prodi?></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-8 d-flex align-items-stretch swiper-slide" style="width: 190px;">
-                                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="member-img">
-                                        <img src="<?= base_url() ?>home/assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                        <div class="social">
-                                            <a href=""><i class="bi bi-twitter"></i></a>
-                                            <a href=""><i class="bi bi-facebook"></i></a>
-                                            <a href=""><i class="bi bi-instagram"></i></a>
-                                            <a href=""><i class="bi bi-linkedin"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="member-info">
-                                        <h4>Walter White</h4>
-                                        <span>Chief Executive Officer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-8 d-flex align-items-stretch swiper-slide" style="width: 190px;">
-                                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="member-img">
-                                        <img src="<?= base_url() ?>home/assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                        <div class="social">
-                                            <a href=""><i class="bi bi-twitter"></i></a>
-                                            <a href=""><i class="bi bi-facebook"></i></a>
-                                            <a href=""><i class="bi bi-instagram"></i></a>
-                                            <a href=""><i class="bi bi-linkedin"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="member-info">
-                                        <h4>Walter White</h4>
-                                        <span>Chief Executive Officer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-8 d-flex align-items-stretch swiper-slide" style="width: 190px;">
-                                <div class="member" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="member-img">
-                                        <img src="<?= base_url() ?>home/assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                                        <div class="social">
-                                            <a href=""><i class="bi bi-twitter"></i></a>
-                                            <a href=""><i class="bi bi-facebook"></i></a>
-                                            <a href=""><i class="bi bi-instagram"></i></a>
-                                            <a href=""><i class="bi bi-linkedin"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="member-info">
-                                        <h4>Walter White</h4>
-                                        <span>Chief Executive Officer</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                         <div class="swiper-pagination" style="padding: 100px 0 0 0;"></div>
                     </div>
@@ -306,12 +252,12 @@
 
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="<?= base_url() ?>home/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
+                                <img src="https://ti.stimiksepnop.ac.id/wp-content/uploads/2020/11/tio-2-150x150.jpg" class="testimonial-img" alt="">
+                                <h3>Setyo Budi Rustanto</h3>
+                                <h4>IT &amp; Support</h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                    Perkembangnnya kedepan semoga akan sangat maju, dan semoga menjadi semakin baik, supaya menjadi kampus pilihan di kota Jayapura, Saya sangat bangga menjadi alumni STIMIK Sepuluh Nopember Jayapura.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
@@ -319,55 +265,41 @@
 
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="<?= base_url() ?>home/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
+                                <img src="https://ti.stimiksepnop.ac.id/wp-content/uploads/2020/09/ddddd-150x150.jpg" class="testimonial-img" alt="">
+                                <h3>Irfan Cahya Putra</h3>
                                 <h4>Designer</h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                                    Saya masuk ke STIMIK Sepuluh Nopember Jayapura  dengan niat serta Komitmen yang tinggi, ternyata disambut baik oleh pihak kampus. Mulai dari Dosen hingga Pengurus kampus sangat membantu saya hingga bisa mendapatkan gelar S.Kom dimana dalam dunia kerja saat ini sangat dibutuhkan tenaga ahli yang memiliki latar belakang pendidikan IT. Saya bangga pernah menjadi bagian dari STIMIK SEPNOP Jayapura.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
-                        </div><!-- End testimonial item -->
-
+                        </div>
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="<?= base_url() ?>home/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
+                                <img src="https://ti.stimiksepnop.ac.id/wp-content/uploads/2021/12/IMG_5155_ed-150x150.jpg" class="testimonial-img" alt="">
+                                <h3>Nurhaida</h3>
+                                <h4>Teacher</h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                                    Kampus stimik ada tempat belajar yang indah dimana hal yang belum pernah saya belajari sebelumnya sy pelajari di kampus stimik, tempat yang begitu nyaman untuk belajar dan banyak teman” yang selalu membatu, ditempat ini sy menemukan hal” baru dan keluarga baru. Makasih stimik sepuluh nopember jayapura jaya selalu dan Terima kasih untuk semua ilmu yang sdh diberikan kepada kami
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
-                        </div><!-- End testimonial item -->
-
+                        </div>
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="<?= base_url() ?>home/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
+                                <img src="https://ti.stimiksepnop.ac.id/wp-content/uploads/2020/09/FB_IMG_1585843184954-150x150.jpg" class="testimonial-img" alt="">
+                                <h3>Ken Dianto</h3>
+                                <h4>Networking</h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                                    Program studi teknik informatika sangatlah luas dan banyak hal baru yang akan menjadi tantangan disetiap mata kuliahnya, meskipun kampus stimik belum sebesar kampus lainnya tapi ilmu yang didapat akan bersaing dengan kampus lainnya
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
-                        </div><!-- End testimonial item -->
+                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <img src="<?= base_url() ?>home/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
-                                <p>
-                                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                </p>
-                            </div>
-                        </div><!-- End testimonial item -->
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -400,20 +332,20 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+            <div class="copyright" style="font-size: large;">
+                Universitas Sepuluh Nopember Papua
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Jayapura
             </div>
         </div>
     </footer><!-- End Footer -->
 
-    <div id="preloader"></div>
+    <!-- <div id="preloader"></div> -->
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->

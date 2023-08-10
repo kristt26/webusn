@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Inner Page - Gp Bootstrap Template</title>
+    <title>USN Papua</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?= base_url() ?>/home/assets/img/favicon.png" rel="icon">
+    <link href="<?= base_url() ?>assets/img/favicon.png" rel="icon">
     <link href="<?= base_url() ?>/home/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -92,7 +92,7 @@
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
 
-            <a href="#" class="get-started-btn scrollto">Pendaftaran Mahasiswa</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPLFvQa4Sns2N1Rj2Ou5sFfAYJcPDq85YG_KnpUMlaRadfVA/viewform" target="_blank" class="get-started-btn scrollto">Pendaftaran Mahasiswa</a>
 
         </div>
     </header><!-- End Header -->
@@ -127,15 +127,15 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+            <div class="copyright" style="font-size: large;">
+                Universitas Sepuluh Nopember Papua
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                USN Papua
             </div>
         </div>
     </footer><!-- End Footer -->

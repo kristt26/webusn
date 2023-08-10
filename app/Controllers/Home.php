@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\BeritaModel;
+use App\Models\DosenModel;
 use App\Models\GaleriModel;
 use App\Models\KerjasamaModel;
 use App\Models\PengumumanModel;
@@ -20,6 +21,7 @@ class Home extends BaseController
     protected $prodi;
     protected $pengumuman;
     protected $video;
+    protected $pengajar;
 
     public function __construct() {
         $this->slide= new SlideModel();
@@ -29,6 +31,7 @@ class Home extends BaseController
         $this->prodi= new ProdiModel();
         $this->pengumuman= new PengumumanModel();
         $this->video= new VideoModel();
+        $this->pengajar= new DosenModel();
     }
     public function index(): string
     {
@@ -39,6 +42,7 @@ class Home extends BaseController
         $data['prodi'] = $this->prodi->where('tampil', '1')->findAll();
         $data['pengumuman'] = $this->pengumuman->where('tampil', '1')->orderBy('tanggal', 'desc')->findAll(3);
         $data['video'] = $this->video->where('tampil', '1')->findAll(3);
+        $data['pengajar'] = $this->pengajar->select('dosen.*, prodi.prodi')->join('prodi', 'prodi.id=dosen.prodi_id', 'LEFT')->findAll();
         return view('home', $data);
     }
     public function page(): string

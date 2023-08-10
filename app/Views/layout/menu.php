@@ -23,6 +23,12 @@
                     <span>Pengumuman</span>
                 </a>
             </li>
+            <li class="nav-item" ng-class="{'active': title=='Pengajar'}">
+                <a class="nav-link" href="<?= base_url() ?>/admin/pengajar">
+                    <i class="fas fa-users"></i>
+                    <span>Pengajar</span>
+                </a>
+            </li>
             <li class="nav-item" ng-class="{'active': collapse=='Setting'}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#setView" aria-expanded="true" aria-controls="setView">
                     <i class="fab fa-fw fa-wpforms"></i>

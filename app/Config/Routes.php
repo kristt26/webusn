@@ -89,6 +89,13 @@ $routes->group('admin', ['filter' => 'auth'], function($routes){
         $item->put('put', 'Admin\Pengumuman::put');
         $item->delete('delete/(:num)', 'Admin\Pengumuman::delete/$1');
     });
+    $routes->group('pengajar', function($item){
+        $item->get('/', 'Admin\Pengajar::index');
+        $item->get('read', 'Admin\Pengajar::read');
+        $item->post('post', 'Admin\Pengajar::post');
+        $item->put('put', 'Admin\Pengajar::put');
+        $item->delete('delete/(:num)', 'Admin\Pengajar::delete/$1');
+    });
 });
 
 /*
